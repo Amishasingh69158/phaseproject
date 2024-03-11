@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Apply for AadharCard</h2>
+    <form [formGroup]="appcitizensRef"  class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control"/><br/>
+        <label>gender</label>
+        <input type="text" formControlName="gender" class="form-control"/><br/>
+        <label>dob</label>
+        <input type="date" formControlName="dob" class="form-control"/><br/>
+        <label>phonenumber</label>
+        <input type="number" formControlName="phonenumber" class="form-control"/><br/>
+        <label>address</label>
+        <input type="text" formControlName="address" class="form-control"/><br/>
+        <label>emailid</label>
+        <input type="email" formControlName="emailid" class="form-control"/><br/>
+        <label>password</label>
+        <input type="password" formControlName="password" class="form-control"/><br/>
+        <input type="submit" class="btn btn-success" (click)="createAppCitizensAccount()"/>
+        <button type="button" (click)="appcitizensRef.reset()" class="btn btn-info">Reset</button>
+    </form>
+</div>
+<br/>
+<div *ngIf="message" class="alert alert-info">{{ message }}</div>

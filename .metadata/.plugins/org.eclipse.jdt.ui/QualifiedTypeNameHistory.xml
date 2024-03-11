@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.repository.ApproveCitizensRepository"/>
+    <fullyQualifiedTypeName name="com.service.ApproveCitizensService"/>
+    <fullyQualifiedTypeName name="com.entity.ApproveCitizens"/>
+</qualifiedTypeNameHistroy>

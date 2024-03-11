@@ -1,0 +1,124 @@
+<div *ngIf="f1" class="container">
+    <h1>Here You Can See Your Aadhar Details, Apply  for new And Duplicate Aadhar Card And Update It </h1>
+    <table class="table">
+        <tr>
+            
+            <th>Application Number</th>
+            <th>Name</th>
+            <th>gender</th>
+            <th>dob</th>
+            <th>address</th>
+            <th>PhNumber</th>
+            <th>emailid</th>
+            <th>password</th>
+            <th>issue_date</th>
+            <th>Action</th>
+
+        </tr>
+        <tr *ngFor="let citizen of citizends;">
+           
+            <td>{{citizen.aadharnumber}}</td>
+            <td>{{citizen.name}}</td>
+            <td>{{citizen.gender}}</td>
+            <td>{{citizen.dob}}</td>
+            <td>{{citizen.address}}</td>
+            <td>{{citizen.phonenumber}}</td>
+            <td>{{citizen.emailid}}</td>
+            <td>{{citizen.password}}</td>
+            <td>{{citizen.issue_date | date:'short'}}</td>
+            <input type="button" value="Update" (click)="setCitizenDetails(citizen)" />
+
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="f2" class="container">
+    <h2>Update Your Details</h2>
+  <form [formGroup]="appcitizensRef" (ngSubmit)="updateCitizenDetails()">
+                        <div class="form-group" >
+                        
+                         <input hidden type="number" formControlName="aadharnumber" class="input-field" /><br/>
+                        </div>
+                        <div class="form-group" >
+                         <label>dob</label>
+                         <input type="date" formControlName="dob" class="input-field" placeholder="Enter your dob"/><br/>
+                        </div>
+                        <div class="form-group" >
+                         <label>phonenumber</label>
+                         <input type="number" formControlName="phonenumber" class="input-field" placeholder="Enter your phonenumber"/><br/>
+                        </div>
+                        <div class="form-group" >
+                         <label>address</label>
+                         <input type="text" formControlName="address" class="input-field" placeholder="Enter your address"/><br/>
+                        </div>
+                         <input type="submit" value="Update Your Details"/>
+                         <input type="reset" value="Reset"/>
+                     </form>
+                 
+                     
+        </div>
+      
+            <div *ngIf="f3">
+                <h4>Apply for Dupliicate Aadhar Card Click on the below button</h4>
+                <table class="table">
+                    <tr>
+                        
+                        <th>Application Number</th>
+                        <th>Name</th>
+                        <th>PhNumber</th>
+                        <th>emailid</th>
+                        <th>Reson For Apply Duplicate Aadhar Card</th>
+                        
+            
+                    </tr>
+                    <tr *ngFor="let citizen of citizends;">
+                       
+                        <td>{{citizen.aadharnumber}}</td>
+                        <td>{{citizen.name}}</td>
+                        <td>{{citizen.phonenumber}}</td>
+                        <td>{{citizen.emailid}}</td>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
+                        <button type="button" (click)="apply(citizen)" class="btn btn-info">Apply for Dupliicate Aadhar Card</button>
+                    </tr>
+                </table>
+        
+            </div>
+
+            <div *ngIf="f4">
+                <h3>Are You Sure You Want to Apply for Dupliicate Aadhar Card</h3>
+                <form [formGroup]="messageRef" (ngSubmit)="saveApply()">
+                    <div class="form-group" >
+                     <input hidden type="number" formControlName="aadharnumber" class="input-field" /><br/>
+                    </div>
+                    <div class="form-group" >
+                        <label>name</label>
+                        <input type="text" formControlName="name" class="input-field" placeholder="Enter your name"/><br/>
+                       </div>
+                    <div class="form-group" >
+                     <label>phonenumber</label>
+                     <input type="number" formControlName="phonenumber" class="input-field" placeholder="Enter your phonenumber"/><br/>
+                    </div>
+                    <div class="form-group" >
+                     <label>emailid</label>
+                     <input type="text" formControlName="emailid" class="input-field" placeholder="Enter your emailid"/><br/>
+                    </div>
+                    <div class="form-group" >
+                        <label>massage</label>
+                        <input type="text" formControlName="message" class="input-field" placeholder="Enter your massage"/><br/>
+                       </div>
+                     <input type="submit" value="Apply for Dupliicate Aadhar Card"/>
+                     <input type="reset" value="Reset"/>
+                 </form>
+             
+            </div>
+            <div>
+                <h4>If you applied for Dupliicate Aadhar Card After 2 or 3 days click on the below link to download Dupliicate Aadhar Card</h4>
+                <a routerLink="/files">Download Dupliicate Aadhar Card!</a>
+
+            </div>
+
+    <a routerLink="/newAadhar">Apply for new Aadhar Card!</a>
+    <br/>
+    <br/>
+     <span style="color:red">{{msg}}</span>
+       
